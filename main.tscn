@@ -1,0 +1,86 @@
+[gd_scene load_steps=7 format=3 uid="uid://b4b64xa1rvppc"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_dv8wr"]
+[ext_resource type="PackedScene" uid="uid://cfpnojv68ndrd" path="res://player.tscn" id="1_ooulb"]
+[ext_resource type="PackedScene" uid="uid://dlyokes4ucld4" path="res://carot.tscn" id="2_sqbxb"]
+[ext_resource type="PackedScene" uid="uid://cqinpmw412vmf" path="res://carots_counter.tscn" id="4_qj2vd"]
+[ext_resource type="Script" path="res://carots_counter.gd" id="5_pv865"]
+[ext_resource type="AudioStream" uid="uid://byxy27vg4njkk" path="res://assets/sounds/loop music.wav" id="6_bm58l"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_dv8wr")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -16.0
+offset_top = -15.0
+offset_right = 504.0
+offset_bottom = 740.0
+color = Color(1, 0.838489, 0.537161, 1)
+
+[node name="Carot" parent="." instance=ExtResource("2_sqbxb")]
+position = Vector2(94, 659)
+
+[node name="Carot2" parent="." instance=ExtResource("2_sqbxb")]
+position = Vector2(94, 583)
+
+[node name="Carot3" parent="." instance=ExtResource("2_sqbxb")]
+position = Vector2(94, 504)
+
+[node name="Carot4" parent="." instance=ExtResource("2_sqbxb")]
+position = Vector2(238, 659)
+
+[node name="Carot5" parent="." instance=ExtResource("2_sqbxb")]
+position = Vector2(238, 583)
+
+[node name="Carot6" parent="." instance=ExtResource("2_sqbxb")]
+position = Vector2(238, 504)
+
+[node name="Carot7" parent="." instance=ExtResource("2_sqbxb")]
+position = Vector2(383, 659)
+
+[node name="Carot8" parent="." instance=ExtResource("2_sqbxb")]
+position = Vector2(383, 583)
+
+[node name="Carot9" parent="." instance=ExtResource("2_sqbxb")]
+position = Vector2(383, 504)
+
+[node name="Carot10" parent="." instance=ExtResource("2_sqbxb")]
+position = Vector2(94, 325)
+
+[node name="Carot11" parent="." instance=ExtResource("2_sqbxb")]
+position = Vector2(94, 248)
+
+[node name="Carot12" parent="." instance=ExtResource("2_sqbxb")]
+position = Vector2(94, 172)
+scale = Vector2(1.01073, 1.00616)
+
+[node name="Carot13" parent="." instance=ExtResource("2_sqbxb")]
+position = Vector2(238, 325)
+
+[node name="Carot14" parent="." instance=ExtResource("2_sqbxb")]
+position = Vector2(238, 248)
+
+[node name="Carot15" parent="." instance=ExtResource("2_sqbxb")]
+position = Vector2(238, 172)
+
+[node name="Carot16" parent="." instance=ExtResource("2_sqbxb")]
+position = Vector2(383, 325)
+
+[node name="Carot17" parent="." instance=ExtResource("2_sqbxb")]
+position = Vector2(383, 248)
+
+[node name="Carot18" parent="." instance=ExtResource("2_sqbxb")]
+position = Vector2(383, 172)
+
+[node name="Player" parent="." instance=ExtResource("1_ooulb")]
+position = Vector2(239, 412)
+
+[node name="CarotsCounter" parent="." instance=ExtResource("4_qj2vd")]
+script = ExtResource("5_pv865")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_bm58l")
+volume_db = -16.805
+
+[connection signal="update_counter" from="." to="CarotsCounter" method="_on_main_update_counter"]
+[connection signal="mouse_entered" from="ColorRect" to="." method="_on_color_rect_mouse_entered"]

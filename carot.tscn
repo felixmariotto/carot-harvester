@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://dlyokes4ucld4"]
+
+[ext_resource type="Script" path="res://carot.gd" id="1_k1g7c"]
+[ext_resource type="Texture2D" uid="uid://7n0gghfoc30l" path="res://assets/carot/stage-1.png" id="1_wweef"]
+[ext_resource type="Texture2D" uid="uid://8xyf7ltmk83x" path="res://assets/carot/base.png" id="2_awyf2"]
+[ext_resource type="AudioStream" uid="uid://b0gp8yegkteup" path="res://assets/sounds/destroyed-carot.wav" id="4_aonqy"]
+[ext_resource type="AudioStream" uid="uid://ccrqbyxe5rpfs" path="res://assets/sounds/picked-carot.wav" id="5_lvmcg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0tfd7"]
+radius = 13.0384
+
+[node name="Carot" type="Area2D"]
+script = ExtResource("1_k1g7c")
+minWaitTime = 10.0
+maxWaitTime = 20.0
+metadata/_edit_group_ = true
+
+[node name="BaseSprite" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.482353)
+scale = Vector2(0.875, 0.875)
+texture = ExtResource("2_awyf2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0tfd7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(3, -1)
+scale = Vector2(4.5, 4.5)
+texture = ExtResource("1_wweef")
+
+[node name="GrowTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="AudioDestroyed" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_aonqy")
+
+[node name="AudioPicked" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_lvmcg")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
